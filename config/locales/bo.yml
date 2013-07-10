@@ -1,0 +1,12 @@
+# Localization file for Tibetan of topical_map integration plugin.
+bo:
+    activeresource:
+        models:
+            category:
+                one: 'བརྗོད་བྱ་གཙོ་བོ།'
+                other: 'བརྗོད་བྱ་གཙོ་བོ་དག་'
+        attributes:
+            category:
+                child: 'བརྗོད་བྱ་གཙོ་བོའི་རིགས་དབྱེ།'
+                root: 'སྤྱིའི་བརྗོད་བྱ་གཙོ་བོ།'
+                parent: 'བརྗོད་གཞི་གཙོ་བོ།'

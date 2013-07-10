@@ -1,5 +1,7 @@
 module SubjectsIntegration
   class SubjectsResource < ActiveResource::Base
+    #cached_resource
+    
     case InterfaceUtils::Server.environment
     when InterfaceUtils::Server::DEVELOPMENT
       self.site = 'http://127.0.0.1/'

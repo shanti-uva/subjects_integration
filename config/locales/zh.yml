@@ -1,0 +1,12 @@
+# Localization file for Chinese of topical_map integration plugin.
+zh:
+    activeresource:
+        models:
+            category:
+                one: '主题'
+                other: '主题'
+        attributes:
+            category:
+                child: '主题分类'
+                root: '总主题'
+                parent: '上一级主题'

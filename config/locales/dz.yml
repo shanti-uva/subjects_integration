@@ -1,0 +1,12 @@
+# Localization file for Dzongkha of topical_map integration plugin.
+dz:
+    activeresource:
+        models:
+            category:
+                one: 'subject'
+                other: 'subjects'
+        attributes:
+            category:
+                child: 'Subject Division'
+                root: 'Master Subject'
+                parent: 'Parent Subject'
