@@ -10,7 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-// Old used thickbox-compressed and subjects_integration/category_selector
 //= require subjects_integration/jquery.checktree
 //= require subjects_integration/model-searcher
 //= require subjects_integration/jquery.draggable.popup
