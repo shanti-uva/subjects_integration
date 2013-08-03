@@ -9,11 +9,7 @@ function ModelSearcher(){
 	
 	// URL for JSON that lists categories in a hierachy (see ModelSearch.createTreeFromArray() for details)
 	this.treeService = "";
-	
-	// A script on the same subdomain. When a URL is appended to this string, the resulting URL should return the original URL's content.
-	// The proxy can be bypassed by using service URLs that don't begin with "http" (and are thus on the subdomain and don't need a proxy)
-	this.proxy = "";
-	
+		
 	// The id attribute of the div which contains all of DOM elements for this 
 	this.divId = "";
 	
@@ -112,7 +108,6 @@ function ModelSearcher(){
 		if(typeof(options.selectedObjects) != "undefined")		{ this.selectedObjects = options.selectedObjects; }
 		if(typeof(options.hasTree) != "undefined")				{ this.hasTree = options.hasTree; }
 		if(typeof(options.singleSelection) != "undefined")		{ this.singleSelection = options.singleSelection; }
-		if(typeof(options.proxy) != "undefined")				{ this.proxy = options.proxy; }
 		this.binHiddenFieldTemplate = '<input type="hidden" name="'+this.fieldName+'" id="' + this.hiddenFieldName + '_' + this.varname + '" value="{value}" />'
 		this.divId = divId;
 		this.table = jQuery('tr[id^=' + this.varname + ']').first().closest('.mobj');
@@ -128,14 +123,6 @@ function ModelSearcher(){
 		this.autocompleteInput = jQuery('#searcher_autocomplete_' + this.varname);
 		this.hiddenIdInput = jQuery('#' + this.hiddenFieldName + '_' + this.varname);
 		
-		// Request the service through a proxy if it's not local
-		if(this.listService.substr(0,4) == 'http'){
-			this.listService = this.proxy+this.listService;
-		}
-		if(this.treeService.substr(0,4) == 'http'){
-			this.treeService = this.proxy+this.treeService;
-		}
-
 		jQuery.getJSON(this.listService, function(data){
 			array = []
 			that.objectList = {};
