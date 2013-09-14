@@ -4,7 +4,7 @@ function include(arr, obj) {
 }
 
 function ModelSearcher(){
-	// URL for JSON that lists categories in the form [{"name":"Agricultrure","id":4074},{"name":"Agriculture","id":2558}]
+	// URL for JSON that lists categories in the form [{"header":"Agricultrure","id":4074},{"header":"Agriculture","id":2558}]
 	this.listService = "";
 	
 	// URL for JSON that lists categories in a hierachy (see ModelSearch.createTreeFromArray() for details)
@@ -24,7 +24,7 @@ function ModelSearcher(){
 	// Another method of adding objects (instead of using services)
 	this.objectList = null;
 	
-	// A JS array of the object(s) which should be selected in the form [{id: '2594', name: 'animals'}]
+	// A JS array of the object(s) which should be selected in the form [{id: '2594', header: 'animals'}]
 	this.selectedObjects = [];
 	
 	// The jQuery-wrapped DOM element of the hidden input which stores the selected ID(s)
@@ -99,7 +99,7 @@ function ModelSearcher(){
 		this.varname = options['varname'];
 		this.cRowSelector = '#' + this.varname + '_characteristic-row';
 		this.bRowID = this.varname + '_bin';
-		this.binItemTemplate = '<span id="' + this.varname + '_bin_item_{id}" class="tree-names" style="line-height:19px;white-space:nowrap;padding:2px 3px 2px 2px; color:#404040; background-color:#f1f1f1; border:1pt #ccc solid;margin-right:3px;font-size:7pt"><a href="#" class="tree-remove"><img src=\"/<%= asset_path('subjects_integration/delete.png') %>\" height=16 width=16 border=0 alt=\"x\" style=\"display:inline;position:relative;top:4px;left:-2px\"/></a>{content}</span> ';
+		this.binItemTemplate = '<span id="' + this.varname + '_bin_item_{id}" class="tree-names" style="line-height:19px;white-space:nowrap;padding:2px 3px 2px 2px; color:#404040; background-color:#f1f1f1; border:1pt #ccc solid;margin-right:3px;font-size:7pt"><a href="#" class="tree-remove"><%= image_tag('subjects_integration/delete.png', :size => '16x16', :border => '0', :alt => 'x', :style => 'display:inline;position:relative;top:4px;left:-2px') %></a>{content}</span> ';
 		this.listService = listService;
 		this.treeService = treeService;
 		if(typeof(options.searcher) != "undefined")				{ this.searcher = options.searcher; }		
@@ -140,7 +140,7 @@ function ModelSearcher(){
 			}); //multiple: !this.searcher
 		});
 		if(this.selectedObjects && this.selectedObjects.length == 1){
-			this.autocompleteInput.val(this.selectedObjects[0].name);
+			this.autocompleteInput.val(this.selectedObjects[0].header);
 			this.hiddenIdInput.val(this.selectedObjects[0].id);
 		}
 
@@ -318,7 +318,7 @@ function ModelSearcher(){
 					}
 					else {
 						that.hiddenIdInput.val(that.hiddenIdInput[0].value+','+id);
-						that.treeNames.html(that.treeNames[0].innerHTML + ', ' + object.name);
+						that.treeNames.html(that.treeNames[0].innerHTML + ', ' + object.header);
 					}
 				}
 			}
@@ -333,11 +333,11 @@ function ModelSearcher(){
 				that.hiddenIdInput[0].value = id;
 				spans = jQuery('span.tree-names', $bRow);
 				if (spans.length==0) {
-					$bRow.append(that.binItemTemplate.replace('{content}', object.name).replace('{id}', id));
+					$bRow.append(that.binItemTemplate.replace('{content}', object.header).replace('{id}', id));
 				}
 				else {
 					if (spans.length>1) spans.slice(1).remove();
-					spans.replaceWith(that.binItemTemplate.replace('{content}', object.name).replace('{id}', id));
+					spans.replaceWith(that.binItemTemplate.replace('{content}', object.header).replace('{id}', id));
 				}
 			}
 			else
@@ -346,7 +346,7 @@ function ModelSearcher(){
 					id = ids[i]
 					if ( jQuery('#'+that.varname+'_bin_item_'+id, $bRow).length==0 ) {
 						that.selectedObjects.push(that.objectList[id]);
-						$bRow.append(that.binItemTemplate.replace('{content}', that.objectList[id].name).replace('{id}', id));
+						$bRow.append(that.binItemTemplate.replace('{content}', that.objectList[id].header).replace('{id}', id));
 					}
 					if ( jQuery('input[value=' + id + ']', $bRow).length==0 ) {
 						$bRow.append(that.binHiddenFieldTemplate.replace('{value}', id));
@@ -382,22 +382,7 @@ function ModelSearcher(){
 			jQuery('#'+this.treePopupId).hide();
 		}
 	};
-	
-	/* DEPRECATED! Not called anymore */
-	this.autocompleteFormatItem = function(item, i, max){
-		return jQuery.trim(item.name);
-	};
-
-	/* DEPRECATED! Not called anymore */
-	this.autocompleteFormatMatch = function(item, i, max){
-		return jQuery.trim(item.name);
-	};
-	
-	/* DEPRECATED! Not called anymore */
-	this.autocompleteFormatResult = function(item, i, max){
-		return item.id;
-	};
-	
+		
 	this.createTreeFromArray = function(arr){
 		var html = '';
 		if(arr){
