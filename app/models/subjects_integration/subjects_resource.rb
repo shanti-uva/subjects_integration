@@ -12,8 +12,8 @@ module SubjectsIntegration
     when InterfaceUtils::Server::PRODUCTION
       self.site = 'http://127.0.0.1/'
       headers['Host'] = 'subjects.kmaps.virginia.edu' #"subjects.#{InterfaceUtils::Server.get_domain}"
-    when InterfaceUtils::Server::LOCAL
-      self.site = 'http://localhost/shanti/subjects/'
+    #when InterfaceUtils::Server::LOCAL
+    #  self.site = 'http://localhost/shanti/subjects/'
     else
       self.site = 'http://subjects.kmaps.virginia.edu' #"http://subjects.#{InterfaceUtils::Server.get_domain}/"
     end
