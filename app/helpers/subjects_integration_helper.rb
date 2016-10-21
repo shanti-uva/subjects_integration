@@ -170,7 +170,7 @@ module SubjectsIntegrationHelper
         });
       </script>".html_safe
     #if selected_category.blank?
-    val_field = "<input type='text' name='searcher_autocomplete' id='searcher_autocomplete_#{unique_id}' style='padding:3px;width: 300px;' autofocus />".html_safe
+    val_field = "<input type='text' name='searcher_autocomplete' class='form-control form-select ss-select selectpicker' id='searcher_autocomplete_#{unique_id}' style='padding:3px;width: 300px;' autofocus />".html_safe
     #else
     #  val_field = selected_category.instance_of?(Array) ? '-' : selected_category.header
     #end
@@ -189,7 +189,7 @@ module SubjectsIntegrationHelper
     div_id = "#{unique_id}_tmb_category_selector" # this is also in category_selector; need to consolidate
     result = '<tr><td> </td></tr>'
     result << "\n<tr><td style='background-color: #f1f1f1;text-align: right; font-size:10pt;border: 1pt solid #ccc; border-right-style: none; white-space: nowrap'>Category Filter</td><td style='width:100%;background-color: #f1f1f1;border: 1pt solid #ccc; border-left-style: none'>"
-    result << select_tag(:root_topics, options_for_select(['All'] + cats.collect{|cat| [cat.header, cat.id]}, (root.nil? ? 'All' : root.id)), :onchange => "#{unique_id}_tmb_options.selectedRoot = this.value; #{unique_id}.reinit(\"#{div_id}\", #{unique_id}_tmb_options); if ( this.value == 'All') { $('#browse_link_#{unique_id}').hide(); $('#browse_label_#{unique_id}').show(); } else {$('#browse_link_#{unique_id}').show(); $('#browse_label_#{unique_id}').hide()}; $('#searcher_autocomplete_#{unique_id}').focus()", :style => 'font-size: 9pt') if show_dropdown
+    result << select_tag(:root_topics, options_for_select(['All'] + cats.collect{|cat| [cat.header, cat.id]}, (root.nil? ? 'All' : root.id)), onchange: "#{unique_id}_tmb_options.selectedRoot = this.value; #{unique_id}.reinit(\"#{div_id}\", #{unique_id}_tmb_options); if ( this.value == 'All') { $('#browse_link_#{unique_id}').hide(); $('#browse_label_#{unique_id}').show(); } else {$('#browse_link_#{unique_id}').show(); $('#browse_label_#{unique_id}').hide()}; $('#searcher_autocomplete_#{unique_id}').focus()", style: 'font-size: 9pt', class: 'form-control form-select ss-select selectpicker') if show_dropdown
     style = " style=\"font-size:9pt; display:none\""
     result << "&nbsp; <a id=\"browse_link_#{unique_id}\" href=\"#\"#{style if root.nil?}>Browse</a> <span id=\"browse_label_#{unique_id}\"#{style if !root.nil?}>#{BROWSE_SNIPPET}</span></td></tr>\n"
     result << '<tr><td> </td></tr>'
