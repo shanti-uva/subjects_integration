@@ -12,4 +12,3 @@
 //
 //= require subjects_integration/jquery.checktree
 //= require subjects_integration/model-searcher
-//= require subjects_integration/jquery.draggable.popup
