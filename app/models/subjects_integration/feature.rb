@@ -1,6 +1,7 @@
 module SubjectsIntegration
   class Feature < SubjectsResource
     acts_as_active_resource_family_tree
+    acts_as_indexable uid_prefix: 'subjects'
     
     headers['Host'] = SubjectsResource.headers['Host'] if !SubjectsResource.headers['Host'].blank?
     
