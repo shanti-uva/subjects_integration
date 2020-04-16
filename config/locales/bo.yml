@@ -2,11 +2,11 @@
 bo:
     activeresource:
         models:
-            category:
+            subjects_integration/feature:
                 one: 'བརྗོད་བྱ་གཙོ་བོ།'
                 other: 'བརྗོད་བྱ་གཙོ་བོ་དག་'
         attributes:
-            category:
+            subjects_integration/feature:
                 child: 'བརྗོད་བྱ་གཙོ་བོའི་རིགས་དབྱེ།'
                 root: 'སྤྱིའི་བརྗོད་བྱ་གཙོ་བོ།'
                 parent: 'བརྗོད་གཞི་གཙོ་བོ།'

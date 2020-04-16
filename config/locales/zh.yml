@@ -2,11 +2,11 @@
 zh:
     activeresource:
         models:
-            category:
+            subjects_integration/feature:
                 one: '主题'
                 other: '主题'
         attributes:
-            category:
+            subjects_integration/feature:
                 child: '主题分类'
                 root: '总主题'
                 parent: '上一级主题'

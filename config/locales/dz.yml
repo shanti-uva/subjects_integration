@@ -2,11 +2,11 @@
 dz:
     activeresource:
         models:
-            category:
+            subjects_integration/feature:
                 one: 'subject'
                 other: 'subjects'
         attributes:
-            category:
+            subjects_integration/feature:
                 child: 'Subject Division'
                 root: 'Master Subject'
                 parent: 'Parent Subject'
