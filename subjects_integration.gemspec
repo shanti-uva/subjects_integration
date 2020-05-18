@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
   # s.add_dependency "jquery-rails"
 
   # Use postgresql as the database for Active Record
-  s.add_dependency 'pg', '~> 0.15'
+  s.add_dependency 'pg'
   
 end
