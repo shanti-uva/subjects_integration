@@ -2,6 +2,12 @@ module SubjectsIntegration
   class Feature < SubjectsResource
     acts_as_active_resource_family_tree
     acts_as_indexable uid_prefix: 'subjects'
+    
+    def search(id)
+      Rails.cache.fetch("subjects_integration/feature/#{id}", expires_in: 1.hour) do
+        self.flare_search(id)
+      end
+    end
         
     def caption
       current_lang_code = Language.current.code
