@@ -5,8 +5,6 @@ module SubjectsIntegration
     case InterfaceUtils::Server.environment
     when InterfaceUtils::Server::DEVELOPMENT
       self.site = "http://dev-subjects.#{InterfaceUtils::Server.get_domain}/"
-    when InterfaceUtils::Server::STAGING
-      self.site = "http://staging-subjects.#{InterfaceUtils::Server.get_domain}/"
     when InterfaceUtils::Server::PRODUCTION
       self.site = "http://subjects.#{InterfaceUtils::Server.get_domain}/"
     when InterfaceUtils::Server::LOCAL
